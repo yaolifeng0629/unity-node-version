@@ -1,0 +1,41 @@
+{
+    "name": "unity-node-version",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "build": "babel ./index.js --out-dir package",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "github",
+        "repositories",
+        "code",
+        "gitee",
+        "version",
+        "unity",
+        "node",
+        "v"
+    ],
+    "author": "Ims",
+    "license": "ISC",
+    "type": "module",
+    "devDependencies": {
+        "@babel/cli": "^7.23.9",
+        "@babel/core": "^7.24.0",
+        "@babel/preset-env": "^7.24.0",
+        "eslint": "^8.19.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yaolifeng0629/unity-node-version"
+    },
+    "bugs": {
+        "url": "https://github.com/yaolifeng0629/unity-node-version/issues"
+    },
+    "homepage": "https://github.com/yaolifeng0629/unity-node-version#readme",
+    "engines": {
+        "node": ">=14.0.0"
+    }
+}

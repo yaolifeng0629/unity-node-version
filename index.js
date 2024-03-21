@@ -1,39 +1,50 @@
+#!/usr/bin/env node
+
 import fs from 'fs';
 import { exec } from 'child_process';
 
-// 读取 .nvmrc 文件获取期望的 Node 版本
+// Read the .nvmrc file to get the desired Node version
 fs.readFile('.nvmrc', 'utf8', (err, desiredNodeVersion) => {
     if (err) {
-        console.error('.nvmrc 文件读取失败');
+        console.error('Failed to read .nvmrc file');
         process.exit(1);
     }
 
-    desiredNodeVersion = desiredNodeVersion.trim();
+    desiredNodeVersion = desiredNodeVersion.trim().replace('v', '');
 
-    // 获取当前 Node 版本
     const currentNodeVersion = process.version.replace('v', '');
 
-    // 如果当前 Node 版本不匹配 .nvmrc 文件中的版本
+    // If the current Node version does not match the version in the .nvmrc file
     if (currentNodeVersion !== desiredNodeVersion) {
-        console.log(`当前 Node 版本 (${currentNodeVersion}) 与 .nvmrc 文件中的版本 (${desiredNodeVersion}) 不匹配`);
+        console.log(
+            `Current Node version (${currentNodeVersion}) With the version in the .nvmrc file (${desiredNodeVersion}) Mismatch`
+        );
+        console.log();
 
-        // 检查是否安装了 nvm
+        // Check if nvm is installed
         exec('command -v nvm', err => {
             if (err) {
-                console.error('请安装 nvm 并确保它在 PATH 中可用');
+                console.error('Please install nvm and make sure it is available in PATH');
+                console.log('Download Url:', 'https://github.com/coreybutler/nvm-windows/releases');
+                console.log();
                 process.exit(1);
             }
 
-            // 使用 nvm 切换到正确的 Node 版本
+            // Use nvm to switch to the correct Node version
             exec(`nvm use ${desiredNodeVersion}`, (err, stdout, stderr) => {
                 if (err) {
-                    console.error(`切换到 Node 版本 ${desiredNodeVersion} 失败`);
+                    console.error(`Switch to Node version ${desiredNodeVersion} fail!`);
                     console.error(stderr);
+
+                    console.log();
                     process.exit(1);
                 }
 
                 console.log(stdout);
             });
         });
+    } else {
+        console.log('Great, the current version of Node matches the version in .nvmrc!');
+        process.exit(1);
     }
 });

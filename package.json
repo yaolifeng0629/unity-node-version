@@ -1,7 +1,8 @@
 {
     "name": "unity-node-version",
-    "version": "0.0.1",
-    "description": "",
+    "version": "0.0.2",
+    "description": "unity-node-version is a tool used to manage and Node.js versions. It can help you use different versions of Node.js in different projects without manually changing environment variables or reinstalling software.",
+    "bin": "./index.js",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
@@ -16,7 +17,9 @@
         "version",
         "unity",
         "node",
-        "v"
+        "v",
+        "version",
+        "versions"
     ],
     "author": "Ims",
     "license": "ISC",
